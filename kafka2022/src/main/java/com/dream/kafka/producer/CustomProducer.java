@@ -28,7 +28,7 @@ public class CustomProducer {
 
         //1、创建kafka生产者对象
         // "" hello
-        //2022年4月15日20:56:22
+        //2022-4-15 20:59:20
         KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
 
         //2、发送数据
