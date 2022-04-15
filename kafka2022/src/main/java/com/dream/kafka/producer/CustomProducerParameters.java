@@ -15,13 +15,13 @@ public class CustomProducerParameters {
 
     public static void main(String[] args) {
 
-        // 0 配置
+        // 0、配置
         Properties properties = new Properties();
 
         // 连接kafka集群
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"master:9090,slave1:9092");
 
-        //序列化
+        // 序列化
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
 
