@@ -24,13 +24,16 @@ public class CustomProducerCallbackPartitions {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
 
+        // 关联自定义分区器
+        properties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, "com.dream.kafka.producer.MyPartitioner");
+
         //1、创建kafka生产者对象
         // "" hello
         KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(properties);
 
         //2、发送数据
         for (int i = 0; i < 50; i++) {
-            kafkaProducer.send(new ProducerRecord<>("first", "dream" + i), new Callback() {
+            kafkaProducer.send(new ProducerRecord<>("first", "hello" + i), new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
 
