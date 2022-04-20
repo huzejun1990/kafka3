@@ -4,7 +4,6 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
@@ -15,7 +14,7 @@ import java.util.Properties;
  * @Author : huzejun
  * @Date: 2022/4/19-15:54
  */
-public class CustomConsumer {
+public class CustomConsumerByHandSync {
     public static void main(String[] args) {
 
         // 0 配置

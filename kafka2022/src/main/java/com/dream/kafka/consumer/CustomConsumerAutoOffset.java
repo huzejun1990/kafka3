@@ -4,7 +4,6 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
@@ -15,7 +14,7 @@ import java.util.Properties;
  * @Author : huzejun
  * @Date: 2022/4/19-15:54
  */
-public class CustomConsumer {
+public class CustomConsumerAutoOffset {
     public static void main(String[] args) {
 
         // 0 配置
@@ -31,8 +30,8 @@ public class CustomConsumer {
         //配置消费者id
         properties.put(ConsumerConfig.GROUP_ID_CONFIG,"test5");
 
-        // 设置分区分配策略
-        properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG,"org.apache.kafka.clients.consumer.StickyAssignor");
+        // 手动提交
+        properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG,false);
 
         //1 创建一个消费者 "" ,"hello"
         KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
@@ -49,6 +48,11 @@ public class CustomConsumer {
             for (ConsumerRecord<String, String> consumerRecord : consumerRecords) {
                 System.out.println(consumerRecord);
             }
+
+            // 手动提交offset
+            kafkaConsumer.commitSync();
+//            kafkaConsumer.commitAsync();
+
         }
     }
 }
