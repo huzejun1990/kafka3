@@ -11,7 +11,7 @@ import java.util.Properties;
  */
 public class CustomProducerCallback {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 
         // 0 配置
        Properties properties = new Properties();
